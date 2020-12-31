@@ -393,7 +393,7 @@
     font-size: 25px;
   }
   .home-page h5 {
-    color: black;
+    color: white;
   }
   .resume-page {
     height: 200vh;
@@ -418,6 +418,7 @@
   .skills {
     font-size: 24px;
     padding-top: 0;
+    padding: 0;
     -webkit-box-orient: vertical;
     -webkit-box-direction: normal;
         -ms-flex-direction: column;
