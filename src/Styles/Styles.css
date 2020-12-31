@@ -396,7 +396,7 @@
     color: white;
   }
   .resume-page {
-    height: 200vh;
+    height: auto !important;
   }
   .resume-page .resume-download {
     margin: 5px;
@@ -452,14 +452,15 @@
     display: flex;
   }
   .skills-right {
-    width: 100%;
     margin: 0;
-    height: auto !important;
     padding-bottom: 15px;
     border-bottom: 2px solid white;
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
+  }
+  .skills-right ul {
+    margin-top: 19.25px;
   }
   .skills h3 {
     text-align: center;
