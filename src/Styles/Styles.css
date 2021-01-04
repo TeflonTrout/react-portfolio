@@ -469,4 +469,31 @@
     width: 80%;
   }
 }
+
+@media only screen and (max-width: 680px) {
+  .resume-page {
+    text-align: center;
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+  .resume-page .skills-left {
+    width: auto;
+  }
+  .resume-page .skills-center {
+    width: auto;
+  }
+  .resume-page .skills-right {
+    width: auto;
+  }
+  .resume-page ul {
+    text-align: center;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+  }
+}
 /*# sourceMappingURL=Styles.css.map */

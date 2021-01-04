@@ -385,3 +385,26 @@
       width: 80%;
     }
   }
+
+  @media only screen and (max-width: 680px) {
+    .resume-page {
+        text-align: center;
+        padding: 0 !important;
+        margin: 0 !important;
+        .skills-left {
+            width: auto;
+        }
+        .skills-center {
+            width: auto;
+        }
+        .skills-right {
+            width: auto;
+        }
+        ul {
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            
+        }
+    }
+  }
