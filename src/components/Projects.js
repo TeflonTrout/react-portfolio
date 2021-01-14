@@ -4,6 +4,7 @@ import contakterjpg from '../documents/portfolioScreenshots/Contakter.jpg'
 import budgetCalcjpg from '../documents/portfolioScreenshots/budgetCalculator.jpg'
 import currencyCacljpg from '../documents/portfolioScreenshots/currencyConvertScreenshot.jpg'
 import videoGamejpg from '../documents/portfolioScreenshots/videoGameAPI.jpg'
+import caffeinatedTroutjpg from '../documents/portfolioScreenshots/caffeinatedTrout.jpg'
 
 const Projects = () => {
     return (
@@ -22,6 +23,19 @@ const Projects = () => {
                 <div className="buttons">
                     <div class="source-code"><a href="https://github.com/TeflonTrout/react-movie-voting-API">&lt;/Code&gt;</a></div>
                     <div class="hosted"><a href="https://movie-voting-react-app.netlify.app/">Hosted</a></div>
+                </div>
+            </div>
+            <div className="block">
+                <h3>Caffeinated Trout Blog</h3>
+                <div className="block-screencap">
+                    <a href="https://caffeinatedtrout.netlify.app"><img src={caffeinatedTroutjpg} alt=""/></a>
+                </div>
+                <div className="block-software">
+                    Gatsby / GraphQL / SASS / CMS 
+                </div>
+                <div className="buttons">
+                    <div class="source-code"><a href="https://github.com/TeflonTrout/caffeinated-trout-blog">&lt;/Code&gt;</a></div>
+                    <div class="hosted"><a href="https://caffeinatedtrout.netlify.app/">Hosted</a></div>
                 </div>
             </div>
             <div class="block">
