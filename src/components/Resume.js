@@ -1,5 +1,5 @@
 import React from 'react'
-import resumeDOCX from '../documents/Kazousky_WebDev_Resume.docx'
+import resumePDF from '../documents/Kazousky_WebDev_Resume.pdf'
 
 const Resume = () => {
     return (
@@ -36,7 +36,7 @@ const Resume = () => {
                     </ul>
                 </div>
             </div>
-            <div class="resume-download"><a href={resumeDOCX}>Download my Resume!</a></div>
+            <div class="resume-download"><a href={resumePDF}>Download my Resume!</a></div>
         </div>
     )
 }
