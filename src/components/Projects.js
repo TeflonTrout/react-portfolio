@@ -12,7 +12,7 @@ const Projects = () => {
         <h1>My Projects</h1>
         <div className="grid">
 
-            <div className="block">
+            {/* <div className="block">
                 <h3>Movie Voting App</h3>
                 <div className="block-screencap">
                     <a href="https://movie-voting-react-app.netlify.app/"><img src={movieVotingjpg} alt=""/></a>
@@ -24,7 +24,7 @@ const Projects = () => {
                     <div class="source-code"><a href="https://github.com/TeflonTrout/react-movie-voting-API">&lt;/Code&gt;</a></div>
                     <div class="hosted"><a href="https://movie-voting-react-app.netlify.app/">Hosted</a></div>
                 </div>
-            </div>
+            </div> */}
             <div className="block">
                 <h3>Caffeinated Trout Blog</h3>
                 <div className="block-screencap">
@@ -51,7 +51,7 @@ const Projects = () => {
                         <div class="hosted"><a href="https://tender-kare-4cf4da.netlify.app/">Hosted</a></div>
                 </div>
             </div>
-            <div class="block" id="reactCurrencyCalculator">
+            {/* <div class="block" id="reactCurrencyCalculator">
                 <h3>Currency Calculator</h3>
                 <div class="block-screencap">
                     <a href="https://admiring-bardeen-e4357e.netlify.app/"><img src={currencyCacljpg} alt=""/></a>
@@ -63,7 +63,7 @@ const Projects = () => {
                         <div class="source-code"><a href="https://github.com/TeflonTrout/react-currency-converter">&lt;/Code&gt;</a></div>
                         <div class="hosted"><a href="https://admiring-bardeen-e4357e.netlify.app/">Hosted</a></div>
                     </div>
-                </div>
+                </div> */}
             <div class="block" id="reactBudgetApp">
                 <h3>Budgeting App</h3>
                 <div class="block-screencap">
@@ -77,7 +77,7 @@ const Projects = () => {
                     <div class="hosted"><a href="https://hardcore-stonebraker-1da660.netlify.app/">Hosted</a></div>
                 </div>
             </div>
-            <div class="block" id="reactVideoGameApp">
+            {/* <div class="block" id="reactVideoGameApp">
                 <h3>Video Game Playlist</h3>
                 <div class="block-screencap">
                     <a href="https://peaceful-sammet-2173fd.netlify.app/"><img src={videoGamejpg} alt=""/></a>
@@ -89,7 +89,7 @@ const Projects = () => {
                     <div class="source-code"><a href="https://github.com/TeflonTrout/react-video-game-api">&lt;/Code&gt;</a></div>
                     <div class="hosted"><a href="https://peaceful-sammet-2173fd.netlify.app/">Hosted</a></div>
                 </div>
-            </div>
+            </div> */}
         </div>
     </div>
     )
