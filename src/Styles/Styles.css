@@ -219,6 +219,7 @@
   background: -webkit-gradient(linear, left top, left bottom, from(rgba(0, 0, 0, 0.6)), to(rgba(0, 0, 0, 0.6))), url("../documents/pexels-negative-space-97077.jpg");
   background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url("../documents/pexels-negative-space-97077.jpg");
   background-size: cover;
+  min-height: 100vh;
 }
 
 .projects-page h1 {
@@ -309,6 +310,7 @@
 }
 
 .projects-page .hosted a:hover {
+  color: white;
   background: purple;
 }
 

@@ -169,7 +169,7 @@
     width: 100%;
     background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('../documents/pexels-negative-space-97077.jpg');
     background-size: cover;
-
+    min-height: 100vh;
     h1 {
         font-size: 50px;
         width: 100%;
@@ -250,6 +250,7 @@
     }
 
     .hosted a:hover {
+        color: white;
         background: purple;
     }
 }
