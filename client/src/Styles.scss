@@ -1,0 +1,84 @@
+* {
+    text-decoration: none;
+    font-family: 'Roboto', sans-serif;
+}
+
+a {
+    color: white;
+}
+
+.add-movie-form {
+    border: none;
+    display: flex;
+    flex-direction: column;
+    font-size: 34px;
+    justify-content: center;
+    outline: none;
+    padding-top: 10px;
+    width: 100%;
+    form {
+        align-items: center;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
+        width: 100%;
+        input {
+            width: 60%;
+            margin: 10px;
+        }
+        input:focus {
+            outline: none;
+        }
+        option {
+            align-items: center;
+            margin: 10px;
+            text-align: center;
+        }
+        select {
+            margin: 10px;
+            margin-bottom: 20px;
+            align-items: center;
+            width: 30%;
+        }
+        select:focus {
+            outline: none;
+        }
+    }
+}
+
+.card-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 25px;
+    width: 100%;
+    .card-poster {
+        display: flex;
+        justify-content: center;
+        max-width: 100px;
+        width
+        img {
+            justify-content: center;
+            max-width: 100px;
+        }
+    }
+}
+
+.navbar-links {
+    font-weight: 300;
+}
+
+.list-container {
+    display: flex;
+    width: 100%;
+    justify-content: space-evenly;
+}
+
+.list-item {
+    display: flex;
+    width: 60%;
+}
+
+.movieCard {
+    min-width: 250px;
+    max-width: 250px;
+}
