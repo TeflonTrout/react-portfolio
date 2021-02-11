@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { TextField, Select, MenuItem, Button, requirePropFactory } from '@material-ui/core'
+import { TextField, Select, MenuItem, Button, Grid, requirePropFactory } from '@material-ui/core'
 import axios from 'axios'
 import '../Styles.css'
 import MovieCard from './MovieCard.js'
@@ -56,6 +56,11 @@ const AddMovie = () => {
 
     }
 
+    var gridStyle = {
+        width: '300px',
+        flexGrow: 1
+    }
+
     return (
         <div className='add-movie-form'>
             <form onSubmit={e => addMovieToDB(e)}>
@@ -68,22 +73,14 @@ const AddMovie = () => {
                 </select>
                 <Button variant='contained' color="secondary" type='Submit'>Submit</Button>
             </form>
-            {query.map(item => (
-                <div key={item.id} >
 
-                    <MovieCard data={item} />
-
-                </div>
-            ))}
-            {/* <div onClick={submitMovie}>
-                {query.map((item, i) => (
-                    <div key={item.id}>
-                        <h4>{item.title}</h4>
-                        <p>{item.release_date}</p>
-                        <img className="moviePoster" src={`https://image.tmdb.org/t/p/w500/${item.poster_path}`} alt=""/>
-                    </div>
+            <Grid container spacing={1} direction='row' justify='center' alignItems='flex-start'>
+                {query.map(item => (
+                    <Grid item style={gridStyle} xs={8} sm={6} md={4} lg={3} xl={2} key={item.id} >
+                        <MovieCard data={item} />
+                    </Grid>
                 ))}
-            </div> */}
+            </Grid>
         </div>
     )
 }
