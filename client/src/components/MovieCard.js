@@ -1,31 +1,68 @@
 import React, { useState, useEffect } from 'react'
-import { Card, CardContent, CardActions, Button, CardMedia, Grid } from '@material-ui/core'
-import Image from './img/placeholder.png'
+import { Card, CardContent, CardActions, Snackbar, Button, CardMedia, MenuItem, Select } from '@material-ui/core'
+import IconButton from '@material-ui/core/IconButton';
+import CloseIcon from '@material-ui/icons/Close';
+import Image from './img/placeholder.png';
+import axios from 'axios';
 
 const MovieCard = (props) => {
+    const [snackbar, setSnackbar] = useState(false);
+    const [priority, setPriority] = useState("");
     const [positiveRating, setPositiveRating] = useState(false);
 
     var cardStyle = {
         display: 'flex',
         height: '800px',
         justifyContent: 'center',
+        padding: '0px',
         position: 'relative',
         width: '100%'
     }
 
     var cardActionsStyle = {
         bottom: 0,
-        marginBottom: '20px',
+        display: 'flex',
+        justifyContent: 'space-evenly',
+        padding: '0px',
         position: 'absolute',
+        marginBottom: '20px',
+        width: '100%'
     }
 
     useEffect(() => {
         var rating = props.data.vote_average;
-
         if ( rating >= 7) {
             setPositiveRating(true)
         }
     }, [])
+
+    const handlePriorityChange = e => {
+        e.preventDefault();
+        setPriority(e.target.value);
+    }
+
+    const addMovie = (e, props) => {
+        e.preventDefault();
+
+        axios.post('http://localhost:5000/posts', {
+            "id" : props.data.title,
+            "movieTitle": props.data.title,
+            "priority": priority,
+            "submittedOn": Date.now()
+        })
+        .then(res =>{
+            console.log(res)
+        })
+        setSnackbar(true);
+    }
+
+    const handleClose = (event, reason) => {
+        if (reason === 'clickaway') {
+          return;
+        }
+    
+        setSnackbar(false);
+      };
 
     return (
         <div className='card-container'>
@@ -41,10 +78,39 @@ const MovieCard = (props) => {
                         <p className='description-true'>{props.data.overview}</p>
                     </div>
                     <CardActions style={cardActionsStyle}>
-                        <Button color='primary' variant='contained'>Add</Button>
+                        <p>
+                            Priority
+                        </p>
+                        <Select 
+                            style={{minWidth: '100px'}}
+                            value={priority}
+                            onChange={e => handlePriorityChange(e)}
+                        >
+                            <MenuItem value="Low">Low</MenuItem>
+                            <MenuItem value="Medium">Medium</MenuItem>
+                            <MenuItem value="High">High</MenuItem>
+                        </Select>
+                        <Button onClick={e => addMovie(e, props)} color='primary' variant='contained'>Add</Button>
                     </CardActions>
                 </CardContent>
             </Card>
+            <Snackbar
+                anchorOrigin={{
+                vertical: 'bottom',
+                horizontal: 'left',
+                }}
+                open={snackbar}
+                autoHideDuration={6000}
+                onClose={handleClose}
+                message="Movie Added to Wishlist"
+                action={
+                <React.Fragment>
+                    <IconButton size="small" aria-label="close" color="inherit" onClick={handleClose}>
+                        <CloseIcon fontSize="small" />
+                    </IconButton>
+                </React.Fragment>
+                }
+            />
         </div>
     )
 }

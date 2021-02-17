@@ -1,10 +1,13 @@
 import express from 'express'
-import {createPost} from '../controllers/posts.js'
+import {createPost,
+        getPost,
+        deletePost
+        } from '../controllers/posts.js'
 
 const router = express.Router();
 
 // //RETRIEVES ALL POSTS
-// router.get('/', getPost)
+router.get('/', getPost)
 
 //CREATES NEW POST
 router.post('/', createPost);
@@ -13,6 +16,6 @@ router.post('/', createPost);
 // router.patch('/:id', updatePost);
 
 // //DELETES A POST BY ID
-// router.delete('/:id', deletePost);
+router.delete('/:id', deletePost);
 
 export default router

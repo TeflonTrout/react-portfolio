@@ -1,9 +1,13 @@
 import mongoose from 'mongoose';
 
 const postSchema = mongoose.Schema({
+    id: {
+        type: Date,
+        default: Date.now()
+    },
     movieTitle: String,
     creator: String,
-    priority: Number,
+    priority: String,
     submittedOn: {
         type: Date,
         default: Date.now()

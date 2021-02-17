@@ -1,49 +1,56 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { Accordion, AccordionSummary, AccordionDetails , Typography } from '@material-ui/core'
+import axios from 'axios';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
+import DeleteIcon from '@material-ui/icons/Delete';
 import '../Styles.css'
 
 
 const Home = () => {
-    const [accordion, setAccordion] = useState([
-        {
-            title: "Alpha",
-            creator: "mike",
-            priority: "Low"
-        },
-        {
-            title: "Bravo",
-            creator: "Christian",
-            priority: "Medium"
-        },
-        {
-            title: "Zulu",
-            creator: "Chris",
-            priority: "High"
-        },
+    const [dataPull, setDataPull] = useState([]);
+    
+    useEffect(() => {
+        axios.get('/posts')
+            .then(results => setDataPull(results.data))
+    }, []);
 
-    ]);
+    const handleDelete = (e, item) => {
+        e.preventDefault();
+        var id = item._id
+        axios.delete(`/posts/${id}`, {
+            params: {id}
+        })
+            .then(response => console.log(response))
+    }
     
     return (
-
-        //MAPPING DATA TO EXPANSION PANEL
-        (accordion.map((item, i) => (
-            <div className='list-container' key={i}>
-                <Accordion className="list-item" >
-                    <AccordionSummary
-                        expandIcon={<ExpandMoreIcon />}
-                    >
-                        <Typography>{item.title}</Typography>
-                    </AccordionSummary>
-                    <AccordionDetails>
-                        <div>
-                        <Typography>Listed by: {item.creator}</Typography>
-                        <Typography>Priority Level: {item.priority}</Typography>
-                        </div>
-                    </AccordionDetails>
-                </Accordion>
-            </div>
-        )))
+        <div>
+        {/* MAPPING DATA TO EXPANSION PANEL */}
+            {dataPull.map(item => {
+                return(
+                    <div className="list-container" key={item.id}>
+                        <Accordion 
+                            className={"list-item " + item.priority}
+                            >
+                            <AccordionSummary
+                                expandIcon={<ExpandMoreIcon />}
+                            >
+                                <Typography>{item.movieTitle}</Typography>
+                            </AccordionSummary>
+                            <AccordionDetails>
+                                <div>
+                                    <Typography>Listed by: {item.creator}</Typography>
+                                    <Typography>Priority Level: {item.priority}</Typography>
+                                </div>
+                                <div className="delete-icon">
+                                    <DeleteIcon onClick={e => handleDelete(e, item)}/>
+                                </div>
+                            </AccordionDetails>
+                        </Accordion>
+                    </div>
+                )
+            })}
+        </div>
     )
 }
 
