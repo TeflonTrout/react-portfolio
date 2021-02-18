@@ -1,24 +1,17 @@
 import React, { useState, useEffect } from 'react'
-import { TextField, Select, MenuItem, Button, Grid, requirePropFactory } from '@material-ui/core'
-import axios from 'axios'
+import { TextField, Select, MenuItem, Button, Grid } from '@material-ui/core'
+import axios from 'axios';
 import '../Styles.css'
 import MovieCard from './MovieCard.js'
 require('dotenv').config();
 
 
 const AddMovie = () => {
-    // const [movieObj, setMovieObj] = useState([
-    //     {id: Date.now(), title: "Braveheart", creator: "JT", priority: "Low"},
-    //     {id: Date.now(), title: "Saturday Night Fever", creator: "Christian", priority: "High"},
-    //     {id: Date.now(), title: "Perks of Being a Wallflower", creator: "Nicholas", priority: "Medium"}
-    // ]);
 
     const API_KEY = process.env.REACT_APP_TMDB_KEY;
 
     const [title, setTitle] = useState("");
     const [query, setQuery] = useState([])
-    const [creator, setCreator] = useState("");
-    const [priority, setPriority] = useState("");
 
     useEffect(()=> {
         const url = `https://api.themoviedb.org/3/movie/popular?api_key=${API_KEY}&language=en-US`;
@@ -28,17 +21,23 @@ const AddMovie = () => {
             });
     },[null])
 
-    const searchChange = e => {
+    const queryUpdate = e => {
+        e.preventDefault();
+        setTitle(e.target.value)
+    }
+
+    const searchMovie = e => {
         e.preventDefault();
         setTitle(e.target.value)
 
-        const url = `https://api.themoviedb.org/3/search/movie?api_key=${API_KEY}&query=${title}&include_adult=false&language=en-us`;
+        const url = `https://api.themoviedb.org/3/search/movie?api_key=${API_KEY}&query=${title}&include_adult=false&language=en-US&page=1`;
 
         //WORK ON THE AXIOS PULL
         axios.get(url)
             .then(res => {
                 return setQuery(res.data.results)
             });
+            console.log(query)
     }
 
     var gridStyle = {
@@ -48,19 +47,20 @@ const AddMovie = () => {
 
     return (
         <div className='add-movie-form'>
-            <form>
-                <input size="medium" label='Search Movie' placeholder="Enter Movie Title" value={title} onChange={e => searchChange(e)}/>
+            <form className="search-form" onSubmit={e => searchMovie(e)}>
+                <input size="medium" label='Search Movie' placeholder="Enter Movie Title" onChange={e => queryUpdate(e)}/>
+                <Button type="submit" color="secondary" variant="contained">Search</Button>
             </form>
             <Grid 
                 container 
                 className="grid"
-                spacing={1} 
+                spacing={8} 
                 direction='row' 
-                justify='center' 
+                justify='space-evenly' 
                 alignItems='flex-start'>
-                {query.slice(0,8).map(item => (
-                    <Grid item style={gridStyle} xs={8} sm={4} md={4} lg={3} xl={2} key={item.id} >
-                        <MovieCard data={item} />
+                {query.slice(0,12).map(item => (
+                    <Grid item key={item.id} style={gridStyle} xs={12} sm={7} md={5} lg={3} xl={2}>
+                        <MovieCard key={item.id} data={item}/>
                     </Grid>
                 ))}
             </Grid>

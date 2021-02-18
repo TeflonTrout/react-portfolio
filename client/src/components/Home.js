@@ -15,12 +15,21 @@ const Home = () => {
     }, []);
 
     const handleDelete = (e, item) => {
-        e.preventDefault();
         var id = item._id
         axios.delete(`/posts/${id}`, {
             params: {id}
-        })
-            .then(response => console.log(response))
+        }).then(response => console.log(response))
+
+        //RELOAD PAGE TO REPULL DATA FROM DATABASE
+        window.location.reload();
+    }
+
+    if (dataPull < 1) {
+        return(
+            <div className="empty-array">
+                <h2>Add some Movies!</h2>
+            </div>
+        )
     }
     
     return (
@@ -28,18 +37,17 @@ const Home = () => {
         {/* MAPPING DATA TO EXPANSION PANEL */}
             {dataPull.map(item => {
                 return(
-                    <div className="list-container" key={item.id}>
+                    <div className="list-container" key={item._id}>
                         <Accordion 
                             className={"list-item " + item.priority}
                             >
                             <AccordionSummary
                                 expandIcon={<ExpandMoreIcon />}
                             >
-                                <Typography>{item.movieTitle}</Typography>
+                                <Typography variant="h5">{item.movieTitle}</Typography>
                             </AccordionSummary>
-                            <AccordionDetails>
+                            <AccordionDetails style={{alignItems: "center"}}>
                                 <div>
-                                    <Typography>Listed by: {item.creator}</Typography>
                                     <Typography>Priority Level: {item.priority}</Typography>
                                 </div>
                                 <div className="delete-icon">

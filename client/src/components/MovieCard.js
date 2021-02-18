@@ -9,10 +9,11 @@ const MovieCard = (props) => {
     const [snackbar, setSnackbar] = useState(false);
     const [priority, setPriority] = useState("");
     const [positiveRating, setPositiveRating] = useState(false);
+    const [negativeRating, setNegativeRating] = useState(false);
 
     var cardStyle = {
         display: 'flex',
-        height: '800px',
+        height: '600px',
         justifyContent: 'center',
         padding: '0px',
         position: 'relative',
@@ -33,6 +34,10 @@ const MovieCard = (props) => {
         var rating = props.data.vote_average;
         if ( rating >= 7) {
             setPositiveRating(true)
+        } else {
+            if(rating < 5) {
+                setNegativeRating(true);
+            }
         }
     }, [])
 
@@ -45,7 +50,7 @@ const MovieCard = (props) => {
         e.preventDefault();
 
         axios.post('http://localhost:5000/posts', {
-            "id" : props.data.title,
+            "id" : props.data._id,
             "movieTitle": props.data.title,
             "priority": priority,
             "submittedOn": Date.now()
@@ -60,7 +65,6 @@ const MovieCard = (props) => {
         if (reason === 'clickaway') {
           return;
         }
-    
         setSnackbar(false);
       };
 
@@ -73,7 +77,7 @@ const MovieCard = (props) => {
                     </div>
                     <h2>{props.data.title}</h2>
                     <h6>Released: {props.data.release_date}</h6>
-                    <p className={'rating ' + (positiveRating ? 'positive' : '')}>Rating: {props.data.vote_average}</p>
+                    <p className={'rating ' + (positiveRating ? 'positive' : '') + (negativeRating ? 'negative' : '')}>Rating: {props.data.vote_average}</p>
                     <div className='description-box'>
                         <p className='description-true'>{props.data.overview}</p>
                     </div>
@@ -82,7 +86,7 @@ const MovieCard = (props) => {
                             Priority
                         </p>
                         <Select 
-                            style={{minWidth: '100px'}}
+                            style={{minWidth: '80px'}}
                             value={priority}
                             onChange={e => handlePriorityChange(e)}
                         >

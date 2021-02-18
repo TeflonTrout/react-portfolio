@@ -4,6 +4,7 @@ import PostMessage from '../models/postMessage.js'
 
 const router = express.Router();
 
+//GET ALL POST FUNCTION
 export const getPost = async (req, res) => {
     try {
         const postMessages = await PostMessage.find();
@@ -14,6 +15,7 @@ export const getPost = async (req, res) => {
     }
 }
 
+//CREATE POST FUNCTION
 export const createPost = async (req,res) => {
     const { movieTitle, creator, priority, submittedOn } = req.body;
     const newPostMessage = new PostMessage({ movieTitle, creator, priority, submittedOn })
@@ -26,14 +28,11 @@ export const createPost = async (req,res) => {
     }
 }
 
+//DELETE FUNCTION
 export const deletePost = async (req, res) => {
     console.log(req.params.id)
-    const { id } = req.params.id
-    PostMessage.findByIdAndRemove(id, (error, data) => {
-        if (error) {
-            console.log("ERROR:", error)
-        } else {
-            console.log("deleted successfully")
-        }
-    });
+    PostMessage.findByIdAndRemove({_id: req.params.id})
+    .then(function(post){
+        res.send(post)
+    })
 }
