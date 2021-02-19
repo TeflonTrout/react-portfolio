@@ -9,14 +9,16 @@ import '../Styles.css'
 const Home = () => {
     const [dataPull, setDataPull] = useState([]);
     
+    //ON LOAD PULL DATA FROM DATABASE
     useEffect(() => {
-        axios.get('/posts')
+        axios.get('https://tdi-movie-wishlist.herokuapp.com/posts')
             .then(results => setDataPull(results.data))
     }, []);
 
+    //DELETE MOVIE BASED ON ID
     const handleDelete = (e, item) => {
         var id = item._id
-        axios.delete(`/posts/${id}`, {
+        axios.delete(`https://tdi-movie-wishlist.herokuapp.com/posts/${id}`, {
             params: {id}
         }).then(response => console.log(response))
 
@@ -24,6 +26,7 @@ const Home = () => {
         window.location.reload();
     }
 
+    //BEFORE RENDER CHECK IF ARRAY IS EMPTY
     if (dataPull < 1) {
         return(
             <div className="empty-array">
@@ -49,6 +52,7 @@ const Home = () => {
                             <AccordionDetails style={{alignItems: "center"}}>
                                 <div>
                                     <Typography>Priority Level: {item.priority}</Typography>
+                                    <Typography>Submitted By: {item.creator}</Typography>
                                 </div>
                                 <div className="delete-icon">
                                     <DeleteIcon onClick={e => handleDelete(e, item)}/>
