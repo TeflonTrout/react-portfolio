@@ -10,6 +10,7 @@ const Resume = () => {
                         <h3>Experience</h3>
                         <li>React</li>
                         <li>Gatsby</li>
+                        <li>MERN Stack</li>
                         <li>HTML</li>
                         <li>SASS/CSS</li>
                         <li>Javascript</li>

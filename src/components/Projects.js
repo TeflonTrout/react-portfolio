@@ -2,9 +2,8 @@ import React from 'react'
 import movieVotingjpg from '../documents/portfolioScreenshots/MovieVotingAPI.jpg'
 import contakterjpg from '../documents/portfolioScreenshots/Contakter.jpg'
 import budgetCalcjpg from '../documents/portfolioScreenshots/budgetCalculator.jpg'
-import currencyCacljpg from '../documents/portfolioScreenshots/currencyConvertScreenshot.jpg'
-import videoGamejpg from '../documents/portfolioScreenshots/videoGameAPI.jpg'
 import caffeinatedTroutjpg from '../documents/portfolioScreenshots/caffeinatedTrout.jpg'
+import movieWishlist from '../documents/portfolioScreenshots/MovieWishlist.JPG'
 
 const Projects = () => {
     return (
@@ -12,19 +11,19 @@ const Projects = () => {
         <h1>My Projects</h1>
         <div className="grid">
 
-            {/* <div className="block">
-                <h3>Movie Voting App</h3>
+            <div className="block">
+                <h3>Movie Wishlist Fullstack App</h3>
                 <div className="block-screencap">
-                    <a href="https://movie-voting-react-app.netlify.app/"><img src={movieVotingjpg} alt=""/></a>
+                    <a href="https://tdi-movie-wishlist.netlify.app/"><img src={movieWishlist} alt=""/></a>
                 </div>
                 <div className="block-software">
-                    React / SASS / Go / API
+                    React / Express / MongoDB / API
                 </div>
                 <div className="buttons">
-                    <div class="source-code"><a href="https://github.com/TeflonTrout/react-movie-voting-API">&lt;/Code&gt;</a></div>
-                    <div class="hosted"><a href="https://movie-voting-react-app.netlify.app/">Hosted</a></div>
+                    {/* <div class="source-code"><a href="https://github.com/TeflonTrout/movie-wishlist">&lt;/Code&gt;</a></div> */}
+                    <div class="hosted"><a href="https://tdi-movie-wishlist.netlify.app/">Hosted</a></div>
                 </div>
-            </div> */}
+            </div>
             <div className="block">
                 <h3>Caffeinated Trout Blog</h3>
                 <div className="block-screencap">
